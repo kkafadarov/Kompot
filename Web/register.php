@@ -118,6 +118,7 @@
                 if ($mysqli->query($sql)) {
                     //echo "New Record has id ".$mysqli->insert_id;
                     echo "<p>Registred successfully!</p>";
+                    echo "<a href=\"login.php\">Sign In</a>";
                 } else {
                     echo "<p>MySQL error no {$mysqli->errno} : {$mysqli->error}</p>";
                     exit();
