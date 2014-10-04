@@ -33,7 +33,8 @@
         <activity
             android:name=".CardPictureActivity"
             android:label="@string/title_activity_card_picture" >
-        <acrivity
+        </activity>
+        <activity
             android:name=".chooseExam"
             android:label="@string/title_activity_choose_exam" >
         </activity>
