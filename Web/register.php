@@ -19,6 +19,7 @@
     <!-- OUR STYLE -->
     <link rel="stylesheet" type="text/css" href="css/style.css">    
     
+    <script src="js/jquery.md5.js"></script>
     <script src="js/register.js"></script>
 </head>
 
@@ -36,8 +37,9 @@
         ?>
 
             <!-- The HTML registration form -->
+            <div class="register">
             <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
-                <table widht="300px">
+                <table>
                 
                 <tr><td style="text-align: right;">
                 Username: 
@@ -66,8 +68,10 @@
 
                 </table>
 
+                <br />
                 <button value="Submit" name="submit" type="submit" class="btn btn-success"> Submit </button>
             </form>
+            </div>
 
         <?php
         } else {
