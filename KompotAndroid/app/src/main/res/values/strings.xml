@@ -7,5 +7,7 @@
     <string name="title_activity_qrscanner">QRScannerActivity</string>
     <string name="title_activity_pair_student">PairStudent</string>
     <string name="title_activity_card_picture">CardPictureActivity</string>
+    <string name="title_activity_choose_exam">chooseExam</string>
+    <string name="title_activity_choose_action">chooseAction</string>
 
 </resources>

@@ -1,0 +1,77 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.jacobshack.kompotandroid.chooseAction">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_margin="5dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:id="@+id/imageView"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/logo"
+                android:layout_marginBottom="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Current Exam Here"
+                android:id="@+id/textViewExam"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Student"
+                android:id="@+id/button"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffff7b11"
+                android:textStyle="bold" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Grade Submission"
+                android:id="@+id/button2"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffff7b11"
+                android:textStyle="bold"
+                android:layout_marginTop="40dp"
+                android:singleLine="false" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Match QR to Student"
+                android:id="@+id/button3"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffff7b11"
+                android:textStyle="bold"
+                android:layout_marginTop="40dp"
+                android:singleLine="false" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Exit Kompot"
+                android:id="@+id/button4"
+                android:layout_gravity="center_horizontal"
+                android:background="#a2555c5b"
+                android:textStyle="bold"
+                android:layout_marginTop="40dp"
+                android:singleLine="false" />
+
+        </LinearLayout>
+    </RelativeLayout>
