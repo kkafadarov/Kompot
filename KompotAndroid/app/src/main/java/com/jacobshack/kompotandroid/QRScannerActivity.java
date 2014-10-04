@@ -1,36 +1,55 @@
 package com.jacobshack.kompotandroid;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.jacobshack.kompotandroid.R;
+import android.view.Window;
 
-public class QRScannerActivity extends ActionBarActivity {
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.Result;
+
+import java.util.Arrays;
+
+import me.dm7.barcodescanner.zxing.ZXingScannerView;
+
+public class QRScannerActivity extends Activity implements ZXingScannerView.ResultHandler {
+
+    private ZXingScannerView mScannerView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_qrscanner);
+    public void onCreate(Bundle state) {
+        super.onCreate(state);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        mScannerView = new ZXingScannerView(this);   // Programmatically initialize the scanner view
+        mScannerView.setFormats(Arrays.asList(BarcodeFormat.QR_CODE));
+
+        setContentView(mScannerView);                // Set the scanner view as the content view
     }
 
-
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.qrscanner, menu);
-        return true;
+    public void onResume() {
+        super.onResume();
+        mScannerView.setResultHandler(this); // Register ourselves as a handler for scan results.
+        mScannerView.startCamera();          // Start camera on resume
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+    public void onPause() {
+        super.onPause();
+        mScannerView.stopCamera();           // Stop camera on pause
+    }
+
+    @Override
+    public void handleResult(Result rawResult) {
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("type", "QRScan");
+        if (rawResult.getBarcodeFormat() != BarcodeFormat.QR_CODE) {
+            setResult(RESULT_CANCELED, returnIntent);
+        } else {
+            returnIntent.putExtra(Constants.QR_CODE, rawResult.getText());
+            setResult(0, returnIntent);
         }
-        return super.onOptionsItemSelected(item);
+        finish();
     }
 }
