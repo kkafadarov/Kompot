@@ -21,18 +21,12 @@ public class ChooseExam extends ActionBarActivity {
         setContentView(R.layout.activity_choose_exam);
 
 
-        String[] tempArray = new String[10];
+        String[] tempArray = new String[3];
 
-        tempArray[0] = "Exam balls 1";
-        tempArray[1] = "Exam balls 2";
-        tempArray[2] = "Exam balls 3";
-        tempArray[3] = "Exam balls 4";
-        tempArray[4] = "Exam balls 5";
-        tempArray[5] = "Exam balls 6";
-        tempArray[6] = "Exam balls 7";
-        tempArray[7] = "Exam balls 8";
-        tempArray[8] = "Exam balls 9";
-        tempArray[9] = "Exam balls 10";
+        tempArray[0] = "Course 1";
+        tempArray[1] = "Course 2";
+        tempArray[2] = "Course 3";
+
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, tempArray);

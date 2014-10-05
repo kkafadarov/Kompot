@@ -24,6 +24,21 @@ public class CardPictureActivity extends Activity {
     private RectangleView theRectangleView;
     private PhotoHandler photoHandler;
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        theCamera.startPreview();          // Start camera on resume
+    }
+
+
+
+    @Override
+    protected void onPause() {
+        // TODO Auto-generated method stub
+        super.onPause();
+        theCamera.stopPreview();
+    }
+
     private Handler autoFocusHandler = new Handler();
 
     // Mimic continuous auto-focusing

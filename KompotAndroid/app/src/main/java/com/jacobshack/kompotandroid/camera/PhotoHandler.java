@@ -23,7 +23,9 @@ public class PhotoHandler implements Camera.PictureCallback {
     public PhotoHandler(Context context, Vector<Float> rectData) {
         this.context = context;
         this.rectData = rectData;
+        this.lastFilePath = "";
     }
+
 
     @Override
     public void onPictureTaken(byte[] data, Camera camera) {
