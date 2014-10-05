@@ -41,11 +41,11 @@ public class PairStudent extends ActionBarActivity {
             Log.d("Kompot", "Request type is null");
             return;
         }
-
+        Log.w("KompotTest", requestType);
         if (requestType.equals("QRScan")) {
             uniqueIdentifier = data.getStringExtra(Constants.QR_CODE);
             getCardPicture();
-        } else if (requestType.equals("CardPicture")) {
+        } else if (requestType.equals("CardImage")) {
             Log.d("KompotTest", uniqueIdentifier);
             // Process the picture
             // Send a request to the server
