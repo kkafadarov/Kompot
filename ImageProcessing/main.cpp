@@ -83,7 +83,7 @@ int main(int argc, char** argv)
 
     if( argc != 3)
     {
-        cout <<" Usage: display_image ImageToLoadAndDisplay" << endl;
+        cout <<" Usage: ProcessImage input_image output_image" << endl;
         return -1;
     }
 
@@ -121,7 +121,7 @@ int main(int argc, char** argv)
 
     double angle = compute_skew(edges);
 
-    namedWindow( "Display window", WINDOW_AUTOSIZE );
+//    namedWindow( "Display window", WINDOW_AUTOSIZE );
 //    imshow( "Display window", edges);
 //    waitKey(0);
     Mat deskewed = deskew(blurred, angle);
