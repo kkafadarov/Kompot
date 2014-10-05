@@ -2,66 +2,86 @@ package com.jacobshack.kompotandroid;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
+import android.hardware.Camera;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
+import android.widget.FrameLayout;
 
-import java.io.File;
-import java.io.IOException;
+import com.jacobshack.kompotandroid.camera.PhotoHandler;
+import com.jacobshack.kompotandroid.camera.Preview;
+import com.jacobshack.kompotandroid.camera.RectangleView;
+
+import java.util.Vector;
 
 public class CardPictureActivity extends Activity {
 
-    int TAKE_PHOTO_CODE = 0;
-    public static int count=0;
+    private Camera theCamera;
+    private Preview thePreview;
+    private RectangleView theRectangleView;
+    private PhotoHandler photoHandler;
 
-    /** Called when the activity is first created. */
+    private Handler autoFocusHandler = new Handler();
+
+    // Mimic continuous auto-focusing
+    private Runnable doAutoFocus = new Runnable() {
+        public void run() {
+            if(theCamera != null) {
+                theCamera.autoFocus(autoFocusCB);
+            }
+        }
+    };
+    Camera.AutoFocusCallback autoFocusCB = new Camera.AutoFocusCallback() {
+        public void onAutoFocus(boolean success, Camera camera) {
+            autoFocusHandler.postDelayed(doAutoFocus, 1000);
+        }
+    };
+
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
         setContentView(R.layout.activity_card_picture);
 
-        //here,we are making a folder named picFolder to store pics taken by the camera using this application
-        final String dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/picFolder/";
-        File newdir = new File(dir);
-        newdir.mkdirs();
+        theCamera = KompotUtil.getCamera();
+        theCamera.autoFocus(autoFocusCB);
+        thePreview = new Preview(this, theCamera);
+        theRectangleView = new RectangleView(this);
 
-        Button capture = (Button) findViewById(R.id.btnCapture);
-        capture.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+        FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
 
-                // here,counter will be incremented each time,and the picture taken by camera will be stored as 1.jpg,2.jpg and likewise.
-                count++;
-                String file = dir + count + ".jpg";
-                Log.d("KompotTest", file);
-                File newfile = new File(file);
-                try {
-                    newfile.createNewFile();
-                } catch (IOException e) {
+        preview.addView(thePreview);
+        preview.addView(theRectangleView);
+
+        Button captureButton = (Button) findViewById(R.id.button_capture);
+        captureButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Vector<Float> rectData = theRectangleView.getScale();
+                if (photoHandler == null) {
+                    photoHandler = new PhotoHandler(getApplicationContext(), rectData);
                 }
-
-                Uri outputFileUri = Uri.fromFile(newfile);
-
-                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
-
-                startActivityForResult(cameraIntent, TAKE_PHOTO_CODE);
+                theCamera.takePicture(null, null, photoHandler);
+                String filePath = photoHandler.getLastFilePath();
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("type", "CardImage");
+                if (filePath == null) {
+                    setResult(RESULT_CANCELED, returnIntent);
+                } else {
+                    returnIntent.putExtra(Constants.CARD_IMAGE, filePath);
+                    setResult(0, returnIntent);
+                }
+                Log.d("KompotTest", "Finish from cardpicture");
+                theCamera.stopPreview();
+                theCamera.release();
+                theCamera = null;
+                finish();
             }
         });
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == TAKE_PHOTO_CODE && resultCode == RESULT_OK) {
-            Log.d("KompotTest", "Pic saved");
-
-
-        }
-    }
 }

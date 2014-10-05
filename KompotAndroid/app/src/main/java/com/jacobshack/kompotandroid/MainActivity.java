@@ -1,5 +1,6 @@
 package com.jacobshack.kompotandroid;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -16,7 +17,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
-
+        final Context ctx = this.getApplicationContext();
 
         ImageButton login_but = (ImageButton) findViewById(R.id.imageButton);
         login_but.setOnClickListener( new View.OnClickListener() {
@@ -32,7 +33,7 @@ public class MainActivity extends ActionBarActivity {
 
     private void processLogin()
     {
-        // TO-DO, currently transitions to ChooseExam
+        // TODO: currently transitions to ChooseExam
 
         Intent intent = new Intent(getApplicationContext(), ChooseExam.class);
         startActivity(intent);

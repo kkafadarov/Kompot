@@ -8,4 +8,8 @@ public class KompotRequest {
         // Send an actual request to the server!
         return;
     }
+
+    public static int pairStudentAndExam(String imageFilePath, String uniqueId) {
+        return 0;
+    }
 }

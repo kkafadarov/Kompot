@@ -9,6 +9,7 @@ import android.view.Window;
 public class PairStudent extends ActionBarActivity {
 
     private static String uniqueIdentifier;
+    private static String imageFilePath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,12 @@ public class PairStudent extends ActionBarActivity {
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         String requestType = data.getStringExtra("type");
+
+        if (requestType == null) {
+            Log.d("Kompot", "Request type is null");
+            return;
+        }
+
         if (requestType.equals("QRScan")) {
             uniqueIdentifier = data.getStringExtra(Constants.QR_CODE);
             getCardPicture();
@@ -43,11 +50,14 @@ public class PairStudent extends ActionBarActivity {
             // Process the picture
             // Send a request to the server
             // Respond if success or not
-            boolean success = false;
-            if (success) {
+            imageFilePath = data.getStringExtra(Constants.CARD_IMAGE);
+            int success = KompotRequest.pairStudentAndExam(imageFilePath, uniqueIdentifier);
+
+            if (success == 0) {
                 finish();
             } else {
                 KompotUtil.makeWarning(this, "Unsuccessful Student/Exam pairing.");
+                //KompotUtil.makeNotification(this, "Failiure", "Unsuccessful Student/Exam pairing");
                 // TODO: Elaborate on error messages.
                 // TODO: Add manual input fallback for student name.
                 finish();
