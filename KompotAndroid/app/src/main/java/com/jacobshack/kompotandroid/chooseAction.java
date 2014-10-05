@@ -9,7 +9,7 @@ import android.view.Window;
 import android.widget.TextView;
 
 
-public class chooseAction extends ActionBarActivity {
+public class ChooseAction extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

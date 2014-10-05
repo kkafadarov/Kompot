@@ -12,7 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 
-public class chooseExam extends ActionBarActivity {
+public class ChooseExam extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,7 @@ public class chooseExam extends ActionBarActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(chooseExam.this, chooseAction.class);
+                Intent intent = new Intent(ChooseExam.this, ChooseAction.class);
                 intent.putExtra("Exam", (listView.getItemAtPosition(position).toString())  );
                 startActivity(intent);
             }

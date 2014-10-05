@@ -32,9 +32,9 @@ public class MainActivity extends ActionBarActivity {
 
     private void processLogin()
     {
-        // TO-DO, currently transitions to chooseExam
+        // TO-DO, currently transitions to ChooseExam
 
-        Intent intent = new Intent(getApplicationContext(), chooseExam.class);
+        Intent intent = new Intent(getApplicationContext(), ChooseExam.class);
         startActivity(intent);
 
     }

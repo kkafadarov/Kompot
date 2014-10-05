@@ -35,11 +35,11 @@
             android:label="@string/title_activity_card_picture" >
         </activity>
         <activity
-            android:name=".chooseExam"
+            android:name=".ChooseExam"
             android:label="@string/title_activity_choose_exam" >
         </activity>
         <activity
-            android:name=".chooseAction"
+            android:name=".ChooseAction"
             android:label="@string/title_activity_choose_action" >
         </activity>
     </application>
