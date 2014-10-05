@@ -20,7 +20,15 @@
             android:id="@+id/imageView"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/logo"
-            android:layout_marginBottom="30dp" />
+            android:layout_marginBottom="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Select active course:"
+            android:id="@+id/textView"
+            android:layout_gravity="center_horizontal" />
 
         <ListView
             android:layout_width="match_parent"
