@@ -41,17 +41,6 @@
                 android:textStyle="bold" />
 
             <Button
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Grade Submission"
-                android:id="@+id/button2"
-                android:layout_gravity="center_horizontal"
-                android:background="#ffff7b11"
-                android:textStyle="bold"
-                android:layout_marginTop="40dp"
-                android:singleLine="false" />
-
-            <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Match QR to Student"

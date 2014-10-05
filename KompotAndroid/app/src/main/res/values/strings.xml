@@ -9,5 +9,6 @@
     <string name="title_activity_card_picture">CardPictureActivity</string>
     <string name="title_activity_choose_exam">chooseExam</string>
     <string name="title_activity_choose_action">chooseAction</string>
+    <string name="title_activity_reveal_pair">RevealPair</string>
 
 </resources>
