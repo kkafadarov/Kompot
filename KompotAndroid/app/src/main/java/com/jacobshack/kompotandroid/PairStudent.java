@@ -64,7 +64,7 @@ public class PairStudent extends ActionBarActivity {
             // Send a request to the server
             // Respond if success or not
             imageFilePath = data.getStringExtra(Constants.CARD_IMAGE);
-            int success = KompotRequest.uploadFile(imageFilePath, uniqueIdentifier);
+            int success =0;// KompotRequest.uploadFile(imageFilePath, uniqueIdentifier);
 
             if (success == 0) {
                 finish();

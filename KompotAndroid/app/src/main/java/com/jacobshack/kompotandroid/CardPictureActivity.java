@@ -91,9 +91,9 @@ public class CardPictureActivity extends Activity {
                     setResult(0, returnIntent);
                 }
                 Log.d("KompotTest", "Finish from cardpicture");
-                theCamera.stopPreview();
-                theCamera.release();
-                theCamera = null;
+                //theCamera.stopPreview();
+                //theCamera.release();
+                //theCamera = null;
                 finish();
             }
         });
