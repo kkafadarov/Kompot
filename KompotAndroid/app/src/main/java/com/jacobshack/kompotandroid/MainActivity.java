@@ -1,10 +1,13 @@
 package com.jacobshack.kompotandroid;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
+import android.widget.ImageButton;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -14,6 +17,27 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
+
+
+        ImageButton login_but = (ImageButton) findViewById(R.id.imageButton);
+        login_but.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                processLogin();
+
+            }
+        });
+
+    }
+
+    private void processLogin()
+    {
+        // TO-DO, currently transitions to chooseExam
+
+        Intent intent = new Intent(getApplicationContext(), chooseExam.class);
+        startActivity(intent);
+
     }
 
 

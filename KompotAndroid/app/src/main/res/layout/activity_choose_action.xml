@@ -20,7 +20,16 @@
                 android:id="@+id/imageView"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/logo"
-                android:layout_marginBottom="30dp" />
+                android:layout_marginBottom="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Current Exam Here"
+                android:id="@+id/textViewExam"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp" />
 
             <Button
                 android:layout_width="fill_parent"
@@ -39,7 +48,7 @@
                 android:layout_gravity="center_horizontal"
                 android:background="#ffff7b11"
                 android:textStyle="bold"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="40dp"
                 android:singleLine="false" />
 
             <Button
@@ -50,7 +59,7 @@
                 android:layout_gravity="center_horizontal"
                 android:background="#ffff7b11"
                 android:textStyle="bold"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="40dp"
                 android:singleLine="false" />
 
             <Button
@@ -61,7 +70,7 @@
                 android:layout_gravity="center_horizontal"
                 android:background="#a2555c5b"
                 android:textStyle="bold"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="40dp"
                 android:singleLine="false" />
 
         </LinearLayout>

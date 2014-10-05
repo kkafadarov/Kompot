@@ -1,9 +1,12 @@
 package com.jacobshack.kompotandroid;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
+import android.widget.TextView;
 
 
 public class chooseAction extends ActionBarActivity {
@@ -11,7 +14,15 @@ public class chooseAction extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_choose_action);
+
+
+        //Get exam
+        Intent intent = getIntent();
+        String exam = intent.getStringExtra("Exam");
+        TextView textView = (TextView) findViewById(R.id.textViewExam);
+        textView.setText(exam);
     }
 
 
