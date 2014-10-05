@@ -92,23 +92,54 @@ int main(int argc, char** argv) {
         string line = lines[i];
         for(int j = 0; j < line.size(); ++j) {
             if(isalpha(line[j])) {
-                name += line[j];
+                name += tolower(line[j]);
             }
         }
     }
 
+    cout << num << name << "\n";
 
+    string query = num + name;
 
-    cout << num << "\n";
-    cout << name << "\n";
-
+    vector<string> data_entries;
     ifstream in_check(argv[2]);
 
+    while(!in_check.eof()) {
+        string line;
+        getline(in_check, line);
 
-    string s = "kitten";
-    string t = "sitting";
-    cout << LevenshteinDistance(s, t) << "\n";
+        if(!in_check) {
+            break;
+        }
 
+        string entry;
+        for(int i = 0; i < line.size(); ++i) {
+            if(isdigit(line[i])) {
+                entry += line[i];
+            }
+
+            if(isalpha(line[i])) {
+                entry += tolower(line[i]);
+            }
+        }
+
+        data_entries.push_back(entry);
+    }
+
+    int res = 100000;
+    string ans = "";
+    for(int i = 0; i < data_entries.size(); ++i) {
+        int dist = LevenshteinDistance(query, data_entries[i]);
+        if( dist < res) {
+            res = dist;
+            ans = data_entries[i];
+        }
+    }
+
+    ofstream out(argv[3]);
+
+    out << res << "\n";
+    out << ans << "\n";
 
     return 0;
 
