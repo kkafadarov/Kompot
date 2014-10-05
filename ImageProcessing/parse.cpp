@@ -97,6 +97,8 @@ int main(int argc, char** argv) {
         }
     }
 
+in_ocr.close();
+
     cout << num << name << "\n";
 
     string query = num + name;
@@ -127,19 +129,27 @@ int main(int argc, char** argv) {
     }
 
     int res = 100000;
-    string ans = "";
+int id = -1;
     for(int i = 0; i < data_entries.size(); ++i) {
         int dist = LevenshteinDistance(query, data_entries[i]);
         if( dist < res) {
             res = dist;
-            ans = data_entries[i];
+            id = i;
         }
     }
+in_check.close();
 
     ofstream out(argv[3]);
 
-    out << res << "\n";
-    out << ans << "\n";
+	string s;
+	for(int i = 0; i < data_entries[id].size(); ++i) {
+		if(isdigit(data_entries[id][i])) {
+			s+=data_entries[id][i];
+		}
+	}
+    out << s << "\n";
+//    out << ans << "\n";
+	out.close();
 
     return 0;
 
