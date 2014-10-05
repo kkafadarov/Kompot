@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="rectangle_mask">#60000000</color>
+    <color name="rectangle_border">#ffafed44</color>
+</resources>

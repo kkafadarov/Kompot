@@ -70,14 +70,54 @@
         if (!$result->num_rows == 1) {
             echo "<p>Invalid username/password combination!</p>";
         } else {
-            echo "<p>Logged in successfully</p>";
-            // do stuffs
         }
         ?>
         
         <script type="text/javascript">
             updateTitle ();
         </script>
+
+        <div class="register">
+            <form action="finalize.php" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="username" value="<?= $username ?>" />
+                <table>
+                    <tr>
+                        <td style="text-align: left;"> Course: <br /> <input type="text" name="course" /> </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;"> Term: <br />
+                            <select name="term">
+                                <option value="fall">Fall</option>
+                                <option value="spring">Spring</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;"> Year: <br /> 
+                            <select name="year">
+                                <option value="2014">2014</option>
+                                <option value="2015">2015</option>
+                                <option value="2016">2016</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;"> Students: <br />
+                            <textarea name="students" rows="15" cols="40"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <label for="file">Exam .pdf file:</label>
+                            <input type="file" name="file" id="file" />
+                        </td>
+                    </tr>
+                </table>
+
+                <br />
+                <button value="Submit" name="submit" type="submit" class="btn btn-success"> Submit </button>
+            </form>
+        </div>
 
         <?php
         }

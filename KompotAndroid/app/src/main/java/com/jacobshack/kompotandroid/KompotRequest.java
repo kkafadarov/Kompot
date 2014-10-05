@@ -17,7 +17,6 @@ public class KompotRequest {
         return;
     }
 
-
     public static boolean authenticate(String name, String pass){
 
         try {
@@ -50,5 +49,10 @@ public class KompotRequest {
 
 
 
+
+
+    public static int pairStudentAndExam(String imageFilePath, String uniqueId) {
+        return 0;
+    }
 
 }
