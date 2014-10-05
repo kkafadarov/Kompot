@@ -5,11 +5,15 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.TextView;
 
 
 public class ChooseAction extends ActionBarActivity {
+
+    String exam;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,9 +24,25 @@ public class ChooseAction extends ActionBarActivity {
 
         //Get exam
         Intent intent = getIntent();
-        String exam = intent.getStringExtra("Exam");
+        exam = intent.getStringExtra("Exam");
         TextView textView = (TextView) findViewById(R.id.textViewExam);
         textView.setText(exam);
+
+
+        //Pair student
+        Button addStudentButton = (Button) findViewById(R.id.button);
+        addStudentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent2 = new Intent(ChooseAction.this, PairStudent.class);
+                intent2.putExtra("Exam", exam );
+                startActivity(intent2);
+
+            }
+        });
+
+
     }
 
 
