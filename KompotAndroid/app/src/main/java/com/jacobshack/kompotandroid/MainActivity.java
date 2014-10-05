@@ -8,7 +8,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-import android.widget.EditText;
 import android.widget.ImageButton;
 
 public class MainActivity extends ActionBarActivity {
@@ -36,12 +35,12 @@ public class MainActivity extends ActionBarActivity {
     {
 
         // TO-DO, currently transitions to ChooseExam
-        if( KompotRequest.authenticate(  ((EditText)findViewById(R.id.editText)).getText().toString(), ((EditText)findViewById(R.id.editText2)).getText().toString()    ) ) {
+       // if( KompotRequest.authenticate(  ((EditText)findViewById(R.id.editText)).getText().toString(), ((EditText)findViewById(R.id.editText2)).getText().toString()    ) ) {
 
 
             Intent intent = new Intent(getApplicationContext(), ChooseExam.class);
             startActivity(intent);
-        }
+        //}
     }
 
 

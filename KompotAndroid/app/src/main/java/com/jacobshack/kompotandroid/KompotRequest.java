@@ -17,6 +17,11 @@ public class KompotRequest {
         return;
     }
 
+    public static String revealPair(String exam, String ID) {
+
+        return "GOSHO";
+    }
+
     public static boolean authenticate(String name, String pass){
 
         try {

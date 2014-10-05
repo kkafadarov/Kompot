@@ -43,6 +43,17 @@ public class ChooseAction extends ActionBarActivity {
         });
 
 
+        //Reveal Pair
+        Button revealPairButton = (Button) findViewById(R.id.button3);
+        revealPairButton.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent3 = new Intent(ChooseAction.this, RevealPair.class);
+                intent3.putExtra("Exam", exam );
+                startActivity(intent3);
+            }
+        });
+
     }
 
 

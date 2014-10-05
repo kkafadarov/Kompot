@@ -3,23 +3,23 @@
     package="com.jacobshack.kompotandroid" >
 
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-
-    <uses-feature android:name="android.hardware.camera"
+    <uses-feature
+        android:name="android.hardware.camera"
         android:required="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <activity android:name=".CardPictureActivity"
+        <activity
+            android:name=".CardPictureActivity"
             android:label="@string/app_name"
-
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name=".MainActivity"
@@ -46,6 +46,10 @@
         <activity
             android:name=".ChooseAction"
             android:label="@string/title_activity_choose_action" >
+        </activity>
+        <activity
+            android:name=".RevealPair"
+            android:label="@string/title_activity_reveal_pair" >
         </activity>
     </application>
 
